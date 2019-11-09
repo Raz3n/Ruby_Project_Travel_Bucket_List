@@ -13,7 +13,7 @@ class Country
   def save()
     sql = "INSERT INTO countries (name)
     VALUES($1)
-    RETURNING id"
+    RETURNING id;"
     values = [@name]
     result = SqlRunner.run(sql, values)
     @id = result.first['id'].to_i
@@ -22,15 +22,26 @@ class Country
   def update()
     sql = "UPDATE countries
     SET (name) = ($1)
-    WHERE id = $2"
+    WHERE id = $2;"
     values = [@name, @id]
     SqlRunner.run(sql, values)
   end
 
   def delete()
-    sql = "DELETE FROM countries WHERE id = $1"
+    sql = "DELETE FROM countries WHERE id = $1;"
     values = [@id]
     SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM countries;"
+    SqlRunner.run(sql)
+  end
+  def self.all()
+    sql = "SELECT * FROM countries"
+    country = SqlRunner.run(sql)
+    result = country.map { |country| Country.new(country)}
+    return result
   end
 
 
