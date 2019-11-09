@@ -21,17 +21,6 @@ class City
     @id = result.first['id'].to_i
   end
 
-  def country()
-    country = Country.find(@country_id)
-    return country
-  end
-
-  def find_country_name
-    sql = "SELECT * FROM countries WHERE country.id = $1"
-    values = [@country_id]
-    result = SqlRunner.run(sql, values)
-    return Country.new(result.first)
-  end
 
 
 
