@@ -19,8 +19,13 @@ class Country
     @id = result.first['id'].to_i
   end
 
-  
-
+  def update
+    sql = "UPDATE countries
+    SET (name) = ($1)
+    WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
+  end
 
 
 
