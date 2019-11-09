@@ -37,10 +37,19 @@ class Country
     sql = "DELETE FROM countries;"
     SqlRunner.run(sql)
   end
+
   def self.all()
     sql = "SELECT * FROM countries"
     country = SqlRunner.run(sql)
     result = country.map { |country| Country.new(country)}
+    return result
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM countries WHERE id = $1"
+    values = [id]
+    country = SqlRunner.run(sql, values)
+    result = Country.new(country.first)
     return result
   end
 
