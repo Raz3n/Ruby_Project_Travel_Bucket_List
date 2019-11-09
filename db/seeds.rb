@@ -9,8 +9,9 @@ country1 = Country.new({'name' => 'Ireland'})
 
 country1.save()
 
-city1 = City.new({})
+city1 = City.new({'country_id' => 'country1.id', 'name' => 'Dublin'})
 
+city1.save()
 
 
 
