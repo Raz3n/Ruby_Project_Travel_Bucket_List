@@ -10,7 +10,7 @@ class Country
     @name = options['name']
   end
 
-  def save
+  def save()
     sql = "INSERT INTO countries (name)
     VALUES($1)
     RETURNING id"
@@ -19,7 +19,7 @@ class Country
     @id = result.first['id'].to_i
   end
 
-  def update
+  def update()
     sql = "UPDATE countries
     SET (name) = ($1)
     WHERE id = $2"
@@ -27,6 +27,11 @@ class Country
     SqlRunner.run(sql, values)
   end
 
+  def delete()
+    sql = "DELETE FROM countries WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
 
 
 end
