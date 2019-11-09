@@ -53,5 +53,4 @@ class Country
     return result
   end
 
-
 end
