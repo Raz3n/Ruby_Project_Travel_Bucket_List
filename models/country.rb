@@ -19,5 +19,9 @@ class Country
     @id = result.first['id'].to_i
   end
 
+  
+
+
+
 
 end
