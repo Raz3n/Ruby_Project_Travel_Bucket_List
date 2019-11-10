@@ -33,15 +33,15 @@ class Visit
   #   return country_id
   # end
 
-  # def update()
-  #   sql = "UPDATE visits
-  #   SET (country_id, city_id, visited)
-  #   = ($1, $2, $3)
-  #   WHERE id = $4;"
-  #   values = [@country_id, @city_id, @visited, @id]
-  #   SqlRunner.run(sql, values)
-  # end
-  #
+  def update()
+    sql = "UPDATE visits
+    SET (country_id, city_id, visited)
+    = ($1, $2, $3)
+    WHERE id = $4;"
+    values = [@country_id, @city_id, @visited, @id]
+    SqlRunner.run(sql, values)
+  end
+  
   # def delete()
   #   sql = "DELETE FROM visits WHERE id = $1"
   #   values = [@id]
