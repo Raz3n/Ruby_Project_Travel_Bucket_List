@@ -26,13 +26,6 @@ class City
     return country
   end # should now be able to get the country info
 
-  def country_name()
-    sql = "SELECT * FROM countries WHERE country.id = $1"
-    vaules = [@country_id]
-    result = SqlRunner.run(sql, values).first
-    return Country.new(result)
-  end
-
   def update()
     sql = "UPDATE cities
     SET (country_id, name) = ($1, $2)

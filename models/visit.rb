@@ -1,0 +1,52 @@
+require_relative('../db/sql_runner')
+# require_relative('./country.rb')
+# require_relative('./city.rb')
+
+class Visit
+
+  attr_reader :id
+  attr_accessor :country_id, :city_id, :visited
+
+  def initialize(options)
+    @id = options['id'].to_i if options['id']
+    @country_id = options['country_id'].to_i
+    @city_id = options['city_id'].to_i
+    @visited = options['visited']
+  end
+
+  def save()
+    sql = "INSERT INTO visits (country_id, city_id, visited)
+    VALUES ($1, $2, $3)
+    RETURNING id;"
+    values = [@country_id, @city_id, @visited]
+    result = SqlRunner.run(sql, values)
+    @id = result.first['id'].to_i
+  end
+
+  # def city()
+  #   city = City.find(@city_id)
+  #   return city
+  # end
+  #
+  # def country()
+  #   country = Country.find(@country_id)
+  #   return country_id
+  # end
+
+  # def update()
+  #   sql = "UPDATE visits
+  #   SET (country_id, city_id, visited)
+  #   = ($1, $2, $3)
+  #   WHERE id = $4;"
+  #   values = [@country_id, @city_id, @visited, @id]
+  #   SqlRunner.run(sql, values)
+  # end
+  #
+  # def delete()
+  #   sql = "DELETE FROM visits WHERE id = $1"
+  #   values = [@id]
+  #   SqlRunner.run(sql, values)
+  # end
+
+
+end
