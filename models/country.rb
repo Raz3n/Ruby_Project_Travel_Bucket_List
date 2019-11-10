@@ -22,7 +22,7 @@ class Country
   def update()
     sql = "UPDATE countries
     SET name = ($1)
-    WHERE id = $2;"
+    WHERE id = $2;" # Tested city update, do I even need country update now?
     values = [@name, @id]
     SqlRunner.run(sql, values)
   end

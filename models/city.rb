@@ -24,14 +24,14 @@ class City
   def update()
     sql = "UPDATE cities
     SET (country_id, name) = ($1, $2)
-    WHERE id = $3;"   #Will this update country table as well? do I need/ can I delete update in country.rb?
+    WHERE id = $3;"
     values = [@country_id, @name, @id]
     SqlRunner.run(sql, values)
   end
 
   def delete()
     sql = "DELETE FROM cities WHERE id = $1;"
-    values = [@id]   # same as above country should be deleted beacuse of on delete cascade?
+    values = [@id]
     SqlRunner.run(sql, values)
   end
 
