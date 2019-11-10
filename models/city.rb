@@ -30,9 +30,20 @@ class City
   end
 
   def delete()
-    sql = "DELETE FROM cities WHERE id = $1"
+    sql = "DELETE FROM cities WHERE id = $1;"
     values = [@id]   # same as above country should be deleted beacuse of on delete cascade?
     SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM cities;"
+    SqlRunner.run(sql)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM cities"
+    city = SqlRunner.run(sql)
+    result = city.map
   end
 
 
