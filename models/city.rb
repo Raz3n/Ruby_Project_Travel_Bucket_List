@@ -21,6 +21,18 @@ class City
     @id = result.first['id'].to_i
   end
 
+  def country()
+    country = Country.find(@country_id)
+    return country
+  end # should now be found in index.erb
+
+  def country_name()
+    sql = "SELECT * FROM countries WHERE country.id = $1"
+    vaules = [@country_id]
+    result = SqlRunner.run(sql, values)
+    return Country.new(result.first)
+  end
+
   def update()
     sql = "UPDATE cities
     SET (country_id, name) = ($1, $2)
@@ -57,9 +69,6 @@ class City
   def self.map_items(city_info)
     return city_info.map {|city| City.new(city)}
   end
-
-  # add get country information using country_id
-
 
 
 end
