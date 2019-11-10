@@ -21,8 +21,13 @@ class City
     @id = result.first['id'].to_i
   end
 
-
-
+  def update()
+    sql = "UPDATE cities
+    SET (country_id, name) = ($1, $2)
+    WHERE id = $3;"   #Will this update country table as well? do I need/ can I delete update in country.rb?
+    values = [@country_id, @name, @id]
+    SqlRunner.run(sql, values)
+  end
 
 
 

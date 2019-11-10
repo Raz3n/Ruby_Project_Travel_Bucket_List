@@ -7,12 +7,14 @@ Country.delete_all()
 
 country1 = Country.new({'name' => 'Ireland'})
 country2 = Country.new({'name' => 'Tanzania'})
+country3 = Country.new({'name' => 'Italy'})
 
 country1.save()
 country2.save()
 
 city1 = City.new({'country_id' => country1.id, 'name' => 'Dublin'})
 city2 = City.new({'country_id' => country2.id, 'name' => 'Zanzibar'})
+city2 = City.new({'country_id' => country3.id, 'name' => 'Rome'})
 
 city1.save()
 city2.save()
