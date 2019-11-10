@@ -13,6 +13,9 @@ country5 = Country.new({'name' => 'Brazil'})
 
 country1.save()
 country2.save()
+country3.save()
+country4.save()
+country5.save()
 
 city1 = City.new({'country_id' => country1.id, 'name' => 'Dublin'})
 city2 = City.new({'country_id' => country2.id, 'name' => 'Zanzibar'})
@@ -23,6 +26,10 @@ city6 = City.new({'country_id' => country5.id, 'name' => 'Sao Paulo'})
 
 city1.save()
 city2.save()
+city3.save()
+city4.save()
+city5.save()
+city6.save()
 
 
 
