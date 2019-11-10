@@ -3,6 +3,7 @@ require_relative('../models/city.rb')
 require_relative('../models/visit.rb')
 require('pry-byebug')
 
+City.delete_all()
 Country.delete_all()
 
 country1 = Country.new({'name' => 'Ireland'})

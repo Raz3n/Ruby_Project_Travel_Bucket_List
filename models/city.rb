@@ -41,10 +41,24 @@ class City
   end
 
   def self.all()
-    sql = "SELECT * FROM cities"
+    sql = "SELECT * FROM cities;"
     city = SqlRunner.run(sql)
     result = city.map
   end
+
+  def self.find(id)
+    sql = "SELECT * FROM cities WHERE id = $1;"
+    values = [id]
+    result = SqlRunner.run(sql, values).first
+    city = City.new(result)
+    return city
+  end
+
+  def self.map_items(city_info)
+    return city_info.map {|city| City.new(city)}
+  end
+
+  # add get country information using country_id
 
 
 
