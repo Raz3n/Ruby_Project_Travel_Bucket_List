@@ -24,13 +24,13 @@ class City
   def country()
     country = Country.find(@country_id)
     return country
-  end # should now be found in index.erb
+  end # should now be able to get the country info
 
   def country_name()
     sql = "SELECT * FROM countries WHERE country.id = $1"
     vaules = [@country_id]
-    result = SqlRunner.run(sql, values)
-    return Country.new(result.first)
+    result = SqlRunner.run(sql, values).first
+    return Country.new(result)
   end
 
   def update()
