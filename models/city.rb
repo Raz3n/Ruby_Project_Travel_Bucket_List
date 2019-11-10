@@ -29,6 +29,12 @@ class City
     SqlRunner.run(sql, values)
   end
 
+  def delete()
+    sql = "DELETE FROM cities WHERE id = $1"
+    values = [@id]   # same as above country should be deleted beacuse of on delete cascade?
+    SqlRunner.run(sql, values)
+  end
+
 
 
 end
