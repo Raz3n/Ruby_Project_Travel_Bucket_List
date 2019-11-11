@@ -5,7 +5,6 @@ require('pry-byebug')
 Country.delete_all()
 City.delete_all()
 
-
 country1 = Country.new({'name' => 'Ireland', 'visited' => true})
 country2 = Country.new({'name' => 'Tanzania', 'visited' => true})
 country3 = Country.new({'name' => 'Italy', 'visited' => true})
