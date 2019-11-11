@@ -11,17 +11,23 @@ get '/' do
   erb(:home)
 end
 
-get '/visit/list' do
+get '/visit/list' do #index
   @cities = City.all
   erb(:index)
 end
 
-get '/visit/new' do
+get '/visit/new' do #new
   @countries = Country.all
   erb(:new)
 end
 
-get '/visit/:id' do
-   @city = City.find(params[:id])
-   erb(:show)
- end
+get '/visit/:id' do #show
+  @city = City.find(params[:id])
+  erb(:show)
+end
+
+post '/visit' do #create
+  @city = City.new(params)
+  @city.save
+  erb(:create)
+end
