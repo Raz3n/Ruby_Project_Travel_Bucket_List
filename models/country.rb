@@ -45,16 +45,16 @@ class Country
     return result
   end
 
+  def self.map_items(country_info)
+    return country_info.map {|country| Country.new(country)}
+  end
+
   def self.find(id)
     sql = "SELECT * FROM countries WHERE id = $1;"
     values = [id]
     result = SqlRunner.run(sql, values).first
     country = Country.new(result)
     return country
-  end
-
-  def self.map_items(country_info)
-    return country_info.map {|country| Country.new(country)}
   end
 
 end

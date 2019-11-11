@@ -1,11 +1,6 @@
-<h1>Travel Bucket List</h1>
+<h1>PLace Holder name</h1>
 
- <div>
-
-  <% @cities.each do |city| %>
-
-   <li>Countries:<%= city.country.name %></li>
-   li>cities: <%= city.name %></li>
-  <% end %>
-
-</div>
+ <% @cities.each do |city| %>
+  <p>Country: <%= city.country.name %></p>
+  <p>city: <%= city.name %></p>
+ <%end %>

@@ -17,5 +17,5 @@ CREATE TABLE visits(
   id SERIAL4 PRIMARY KEY,
   country_id INT4 REFERENCES countries(id) ON DELETE CASCADE,
   city_id INT4 REFERENCES cities(id) ON DELETE CASCADE,
-  visited BOOLEAN
+  visited BOOLEAN NOT NULL
 );

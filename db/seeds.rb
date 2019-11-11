@@ -37,12 +37,12 @@ city5.save()
 city6.save()
 city7.save()
 
-visit1 = Visit.new({'country_id' => country1.id, 'city_id' => city1.id, 'visited' => 'visited'})
-visit2 = Visit.new({'country_id' => country2.id, 'city_id' => city2.id, 'visited' => 'Not visited'})
-visit3 = Visit.new({'country_id' => country3.id, 'city_id' => city3.id, 'visited' => 'visited'})
-visit4 = Visit.new({'country_id' => country5.id, 'city_id' => city5.id, 'visited' => 'visited'})
-visit5 = Visit.new({'country_id' => country5.id, 'city_id' => city6.id, 'visited' => 'Not visited'})
-visit6 = Visit.new({'country_id' => country6.id, 'city_id' => city7.id, 'visited' => 'visited'})
+visit1 = Visit.new({'country_id' => country1.id, 'city_id' => city1.id, 'visited' => TRUE})
+visit2 = Visit.new({'country_id' => country2.id, 'city_id' => city2.id, 'visited' => FALSE})
+visit3 = Visit.new({'country_id' => country3.id, 'city_id' => city3.id, 'visited' => TRUE})
+visit4 = Visit.new({'country_id' => country5.id, 'city_id' => city5.id, 'visited' => TRUE})
+visit5 = Visit.new({'country_id' => country5.id, 'city_id' => city6.id, 'visited' => FALSE})
+visit6 = Visit.new({'country_id' => country6.id, 'city_id' => city7.id, 'visited' => TRUE})
 
 
 visit1.save()

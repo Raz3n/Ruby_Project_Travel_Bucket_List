@@ -21,6 +21,18 @@ class City
     @id = result.first['id'].to_i
   end
 
+  def country()
+    country = Country.find(@country_id)
+    return country
+  end
+
+  def country_name
+    sql = "SELECT * FROM countries WHERE country.id = $1"
+    values = [@country_id]
+    result = SqlRunner.run(sql, values)
+    return Country.new(result.first)
+  end
+
   def update()
     sql = "UPDATE cities
     SET (country_id, name) = ($1, $2)
@@ -42,8 +54,9 @@ class City
 
   def self.all()
     sql = "SELECT * FROM cities;"
-    city = SqlRunner.run(sql)
-    result = city.map
+    city_info = SqlRunner.run(sql)
+    result = map_items(city_info)
+    return result
   end
 
   def self.find(id)
@@ -58,10 +71,7 @@ class City
     return city_info.map {|city| City.new(city)}
   end
 
-  def country()
-    country = Country.find(@country_id)
-    return country
-  end #should now be able to get the country info
+
 
 
 

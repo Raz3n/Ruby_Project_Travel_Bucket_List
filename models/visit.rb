@@ -1,6 +1,6 @@
 require_relative('../db/sql_runner')
-# require_relative('./country.rb')
-# require_relative('./city.rb')
+require_relative('./country.rb')
+require_relative('./city.rb')
 
 class Visit
 
@@ -21,6 +21,16 @@ class Visit
     values = [@country_id, @city_id, @visited]
     result = SqlRunner.run(sql, values)
     @id = result.first['id'].to_i
+  end
+
+  def city()
+    city = City.find(@city_id)
+    return city
+  end
+
+  def country()
+    country = Country.find(@country_id)
+    return country
   end
 
   def update()
@@ -50,6 +60,10 @@ class Visit
     return result
   end
 
+  def self.map_items(visit_info)
+    return visit_info.map {|visit| Visit.new(visit)}
+  end
+
   def self.find(id)
     sql = "SELECT * FROM visits WHERE id = $1;"
     values = [id]
@@ -58,11 +72,30 @@ class Visit
     return visit
   end
 
-  def self.map_items(visit_info)
-    return visit_info.map {|visit| Visit.new(visit)}
+  # def city()
+  #   city = City.find(@city_id)
+  #   return city
+  # end
+  #
+  # def country()
+  #   country = Country.find(@country_id)
+  #   return country
+  # end
+
+  def find_city()
+    sql = "SELECT FROM city WHERE id = $1"
+    values = [@city_id]
+    city = SqlRunner.run(sql, values)
+    result = City.new(city.first)
+    return result
   end
 
-
-  #Add country and city find and def country/city.
+  def find_country()
+    sql = "SELECT FROM country WHERE id = $1"
+    values = [@country_id]
+    country = SqlRunner.run(sql, values)
+    result = Country.new(country.first)
+    return result
+  end
 
 end

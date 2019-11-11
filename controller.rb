@@ -8,5 +8,6 @@ also_reload('./models/*')
 # HOME route
 
 get '/' do
+  @cities = City.all
   erb(:index)
 end
