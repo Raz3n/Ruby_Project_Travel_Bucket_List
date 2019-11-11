@@ -22,10 +22,10 @@ class City
     @id = result.first['id'].to_i
   end
 
-  # def country()
-  #   country = Country.find(@country_id)
-  #   return country
-  # end
+  def country()
+    country = Country.find(@country_id)
+    return country
+  end
   #
   # def country_name
   #   sql = "SELECT * FROM countries WHERE country.id = $1"
@@ -70,6 +70,20 @@ class City
 
   def self.map_items(city_info)
     return city_info.map {|city| City.new(city)}
+  end
+
+  def self.cities_visited
+    sql = 'SELECT * FROM cities WHERE visited = true'
+    visited = SqlRunner.run(sql)
+    cities = map_items(visited)
+    return cities
+  end
+
+  def self.cities_not_visited
+    sql = 'SELECT * FROM cities WHERE visited = false'
+    visited = SqlRunner.run(sql)
+    cities = map_items(visited)
+    return cities
   end
 
 end

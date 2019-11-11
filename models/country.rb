@@ -58,4 +58,18 @@ class Country
     return country_info.map {|country| Country.new(country)}
   end
 
+  def self.countries_visited
+    sql = 'SELECT * FROM countries WHERE visited = true'
+    visited = SqlRunner.run(sql)
+    countries = map_items(visited)
+    return countries
+  end
+
+  def self.countries_not_visited
+    sql = 'SELECT * FROM countries WHERE visited = false'
+    not_visited = SqlRunner.run(sql)
+    countries = map_items(not_visited)
+    return countries
+  end
+
 end
