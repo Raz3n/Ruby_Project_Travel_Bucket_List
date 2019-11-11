@@ -15,16 +15,11 @@ class City
   def save()
     sql = "INSERT INTO cities (country_id, name)
     VALUES($1, $2)
-    RETURNING id;"   #does order matter in save? I think so?
+    RETURNING id;"   #does order matter in save? can't remember
     values = [@country_id, @name]
     result = SqlRunner.run(sql, values)
     @id = result.first['id'].to_i
   end
-
-  def country()
-    country = Country.find(@country_id)
-    return country
-  end # should now be able to get the country info
 
   def update()
     sql = "UPDATE cities
@@ -62,6 +57,12 @@ class City
   def self.map_items(city_info)
     return city_info.map {|city| City.new(city)}
   end
+
+  def country()
+    country = Country.find(@country_id)
+    return country
+  end #should now be able to get the country info
+
 
 
 end

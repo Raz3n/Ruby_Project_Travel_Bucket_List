@@ -63,4 +63,6 @@ class Visit
   end
 
 
+  #Add country and city find and def country/city.
+
 end

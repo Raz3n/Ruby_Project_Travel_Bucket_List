@@ -6,3 +6,7 @@ require_relative('./models/visit')
 also_reload('./models/*')
 
 # HOME route
+
+get '/' do
+  erb(:index)
+end
