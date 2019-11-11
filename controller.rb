@@ -8,6 +8,20 @@ also_reload('./models/*')
 # HOME route
 
 get '/' do
+  erb(:home)
+end
+
+get '/visit/list' do
   @cities = City.all
   erb(:index)
 end
+
+get '/visit/new' do
+  @countries = Country.all
+  erb(:new)
+end
+
+get '/visit/:id' do
+   @city = City.find(params[:id])
+   erb(:show)
+ end
