@@ -12,5 +12,4 @@ CREATE TABLE cities(
   country_id INT4 REFERENCES countries(id) ON DELETE CASCADE,
   name VARCHAR(255),
   visited BOOLEAN NOT NULL
-
 );
