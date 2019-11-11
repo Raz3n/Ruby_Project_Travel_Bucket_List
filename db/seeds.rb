@@ -5,7 +5,7 @@ require('pry-byebug')
 
 Country.delete_all()
 City.delete_all()
-Visit.delete_all()
+
 
 country1 = Country.new({'name' => 'Ireland'})
 country2 = Country.new({'name' => 'Tanzania'})
@@ -36,26 +36,6 @@ city4.save()
 city5.save()
 city6.save()
 city7.save()
-
-visit1 = Visit.new({'country_id' => country1.id, 'city_id' => city1.id, 'visited' => TRUE})
-visit2 = Visit.new({'country_id' => country2.id, 'city_id' => city2.id, 'visited' => FALSE})
-visit3 = Visit.new({'country_id' => country3.id, 'city_id' => city3.id, 'visited' => TRUE})
-visit4 = Visit.new({'country_id' => country5.id, 'city_id' => city5.id, 'visited' => TRUE})
-visit5 = Visit.new({'country_id' => country5.id, 'city_id' => city6.id, 'visited' => FALSE})
-visit6 = Visit.new({'country_id' => country6.id, 'city_id' => city7.id, 'visited' => TRUE})
-
-
-visit1.save()
-visit2.save()
-visit3.save()
-visit4.save()
-visit5.save()
-visit6.save()
-
-
-
-
-
 
 
 binding.pry

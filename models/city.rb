@@ -4,40 +4,41 @@ require_relative('./country.rb')
 class City
 
   attr_reader :id
-  attr_accessor :country_id, :name
+  attr_accessor :country_id, :name, :visited
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @country_id = options['country_id'].to_i
     @name = options['name']
+    @visited = options['visited']
   end
 
   def save()
-    sql = "INSERT INTO cities (country_id, name)
-    VALUES($1, $2)
+    sql = "INSERT INTO cities (country_id, name, visited)
+    VALUES($1, $2, $3)
     RETURNING id;"   #does order matter in save? can't remember
-    values = [@country_id, @name]
+    values = [@country_id, @name, @visited]
     result = SqlRunner.run(sql, values)
     @id = result.first['id'].to_i
   end
 
-  def country()
-    country = Country.find(@country_id)
-    return country
-  end
-
-  def country_name
-    sql = "SELECT * FROM countries WHERE country.id = $1"
-    values = [@country_id]
-    result = SqlRunner.run(sql, values)
-    return Country.new(result.first)
-  end
+  # def country()
+  #   country = Country.find(@country_id)
+  #   return country
+  # end
+  #
+  # def country_name
+  #   sql = "SELECT * FROM countries WHERE country.id = $1"
+  #   values = [@country_id]
+  #   result = SqlRunner.run(sql, values)
+  #   return Country.new(result.first)
+  # end
 
   def update()
     sql = "UPDATE cities
-    SET (country_id, name) = ($1, $2)
-    WHERE id = $3;"
-    values = [@country_id, @name, @id]
+    SET (country_id, name, visited) = ($1, $2, $3)
+    WHERE id = $4;"
+    values = [@country_id, @name, @visited, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -70,9 +71,5 @@ class City
   def self.map_items(city_info)
     return city_info.map {|city| City.new(city)}
   end
-
-
-
-
 
 end
