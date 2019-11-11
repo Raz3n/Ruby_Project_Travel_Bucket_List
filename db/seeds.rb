@@ -35,9 +35,16 @@ city6.save()
 
 visit1 = Visit.new({'country_id' => country1.id, 'city_id' => city1.id, 'visited' => 'visited'})
 visit2 = Visit.new({'country_id' => country2.id, 'city_id' => city2.id, 'visited' => 'Not visited'})
+visit3 = Visit.new({'country_id' => country3.id, 'city_id' => city3.id, 'visited' => 'visited'})
+visit4 = Visit.new({'country_id' => country5.id, 'city_id' => city5.id, 'visited' => 'visited'})
+visit5 = Visit.new({'country_id' => country5.id, 'city_id' => city6.id, 'visited' => 'Not visited'})
+
 
 visit1.save()
 visit2.save()
+visit3.save()
+visit4.save()
+visit5.save()
 
 
 

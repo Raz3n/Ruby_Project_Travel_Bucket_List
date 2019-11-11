@@ -40,7 +40,7 @@ class Visit
 
   def self.delete_all
     sql = "DELETE FROM visits;"
-    SqlRunner(sql)
+    SqlRunner.run(sql)
   end
 
   def self.all()
