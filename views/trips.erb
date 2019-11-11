@@ -1,0 +1,16 @@
+<h1>All Trips</h1>
+<button> <a href='/visit/new'>Create</a></button>
+<div id="trip-wrapper">
+ <% @visits.each do |visit|%>
+
+ <p><%= visit.country.name %></p>
+ <p>City: <%= visit.city.name %></p>
+ <p>Status: <%= visit.visited%></p>
+
+<button><a href="/visit/<%= visit.city.id %>/edit">Edit</a></button>
+<form action="/visit/<%= visit.city.id %>/delete" method="POST">
+  <input type="submit" value="Delete"></form>
+  </div>
+ <%end%>
+
+  </div>

@@ -55,7 +55,7 @@ class Visit
 
   def self.all()
     sql = "SELECT * FROM visits;"
-    visit = SqlRunner.run(sql)
+    visit_info = SqlRunner.run(sql)
     result = map_items(visit_info)
     return result
   end
