@@ -24,7 +24,7 @@
   </tr>
   <% for city in @cities %>
   <tr>
-    <td><%= city.name %></a></td>
+    <td><a href="/cities/<%= city.id %>"><%= city.name %></a></td>
     <td></td>
     <td><%= city.country.name %></td>
     <td></td>

@@ -1,13 +1,23 @@
-  <form method="post" action="/cities/<%= @city.id %>">
-    <label for="city">City Name:</label>
-    <input type="text" name="name" value=""/><br>
+<form method="post" action="/cities/<%= @city.id %>">
 
-    <label for="country">Country Name:</label>
-    <input type="text" name="country_id" value="">
+    <label for="name">City name:</label>
+    <input type="text" name="name" value="<%= @city.name %>"/><br>
+
+  <label for="country">Country Name:</label>
+  <select name="country_id" id="country_name" selected="<%= @city.country_id%>">
+
+      <% @countries.each do |country| %>
+      <% if country.id == @city.country_id %>
+      <option value=<%= country.id %> selected><%= country.name %></option>
+      <% else %>
+      <option value=<%= country.id %>><%= country.name%></option>
+      <% end %>
+    <% end %>
+  </select>
 
     <br>
-    <input type="radio" name="visited" value="true" <%= "checked" if @city.visited %>/>Visited City <br>
-    <input type="radio" name="visited" value="false" <%= "checked" if !@city.visited %>/>Not Visited City <br>
 
+    <input type="radio" name="visited" value="true" <%= "checked" if @city.visited %>/>Visited city <br>
+    <input type="radio" name="visited" value="false" <%= "checked" if !@city.visited %>/>Not visited city<br>
     <input type="submit" value="Edit City">
   </form>

@@ -1,4 +1,4 @@
-  <h1><%= @city.name %></h1>
+<h1><%= @city.name %></h1>
 
   <h3>Country: <%= @city.country.name %>
 
@@ -7,4 +7,5 @@
   <form action="/cities/<%= @city.id %>/delete" method="post">
     <input type="submit" value="Delete City"/>
   </form>
-</section>
+
+  <h4><a href="/cities">All Cities</a></h4>
