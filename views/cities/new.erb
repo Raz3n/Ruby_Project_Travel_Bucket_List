@@ -6,7 +6,11 @@
     <input type="text" name="name" id="name"/><br>
 
     <label for="country"> Country name:</label>
-    <input type="text" name="country_id" id="Country">
+    <select name="country_id" id="country_id">
+      <% @countries.each do |country| %>
+       <option value="<%= country.id %>"><%= country.name %></option>
+       <% end %>
+    </select>
     <br>
     <input type="radio" name="visited" value="true"/>Visited city <br>
     <input type="radio" name="visited" value="false"/>Not visited city <br>
