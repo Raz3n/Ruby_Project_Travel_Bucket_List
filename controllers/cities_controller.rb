@@ -9,6 +9,12 @@ get '/cities' do
   erb(:"cities/index")
 end
 
+post "/cities" do
+  city = City.new(params)
+  city.save
+  redirect to("/cities")
+end
+
 get '/cities/visited' do
   @visited_cities = City.visited
   erb(:"cities/visited")
@@ -29,8 +35,18 @@ get '/cities/:id' do
   erb(:'cities/show')
 end
 
+post "/cities/id" do
+  redirect to "/cities/#{params["id"]}"
+end
+
 get "/cities/:id/edit" do
   @city = City.find(params[:id])
   @countries = Country.all
   erb(:'cities/edit')
+end
+
+post "/cities/:id/delete" do
+  city = City.find(params[:id])
+  city.delete()
+  redirect to '/cities'
 end
