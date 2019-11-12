@@ -1,5 +1,25 @@
-<h1>Countries</h1>
+  <h1>Countries</h1>
 
-<% for country in @countries %>
-<p><a href="/countries/<%= country.id %>"><%= country.name %></a></p>
-<% end %>
+  <ul>
+    <li>
+      <a href="/countries">All Countries</a>
+    </li>
+    <li>
+      <a href="/countries/new">Create new</a>
+    </li>
+  </ul>
+
+  <hr>
+
+    <table>
+      <tr>
+        <th>Country Name</th>
+        <th></th>
+      </tr>
+      <% for country in @countries %>
+      <tr>
+        <td><a href="/countries/<%= country.id %>"><%= country.name %></a></td>
+        <td></td>
+      </tr>
+      <% end %>
+    </table>
