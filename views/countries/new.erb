@@ -2,4 +2,13 @@
 
 <form method="post" action="/countries">
 
+  <label for="country"> Country name:</label>
+  <select name="country_id" id="country_id">
+    <% @countries.each do |country| %>
+     <option value="<%= country.id %>"><%= country.name %></option>
+     <% end %>
+  </select>
+  <br>
+
+  <input type="submit" value="Add Country"/>
 </form>
