@@ -3,8 +3,7 @@ DROP TABLE countries;
 
 CREATE TABLE countries(
   id SERIAL4 PRIMARY KEY,
-  name VARCHAR(255),
-  visited BOOLEAN NOT NULL
+  name VARCHAR(255)
 );
 
 CREATE TABLE cities(

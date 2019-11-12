@@ -26,13 +26,13 @@ class City
     country = Country.find(@country_id)
     return country
   end
-  #
-  # def country_name
-  #   sql = "SELECT * FROM countries WHERE country.id = $1"
-  #   values = [@country_id]
-  #   result = SqlRunner.run(sql, values)
-  #   return Country.new(result.first)
-  # end
+
+  def country_name
+    sql = "SELECT * FROM countries WHERE id = $1"
+    values = [@country_id]
+    result = SqlRunner.run(sql, values)
+    return Country.new(result.first)
+  end
 
   def update()
     sql = "UPDATE cities
@@ -72,18 +72,26 @@ class City
     return city_info.map {|city| City.new(city)}
   end
 
-  def self.cities_visited
-    sql = 'SELECT * FROM cities WHERE visited = true'
-    visited = SqlRunner.run(sql)
-    cities = map_items(visited)
-    return cities
+  def visit
+   if @visited == 'true'
+     return "Visited"
+   else
+     return "Not Visited"
+   end
+ end
+
+  def self.visited
+    sql = 'SELECT * FROM cities WHERE visited = $1'
+    values = [true]
+    results = SqlRunner.run(sql, values)
+    return results.map {|city| City.new(city)}
   end
 
-  def self.cities_not_visited
-    sql = 'SELECT * FROM cities WHERE visited = false'
-    visited = SqlRunner.run(sql)
-    cities = map_items(visited)
-    return cities
+  def self.not_visited
+    sql = 'SELECT * FROM cities WHERE visited = $1'
+    values = [false]
+    results = SqlRunner.run(sql, values)
+    return results.map {|city| City.new(city)}
   end
 
 end

@@ -3,28 +3,27 @@ require_relative('../db/sql_runner')
 class Country
 
   attr_reader :id
-  attr_accessor :name, :visited
+  attr_accessor :name
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
-    @visited = options['visited']
   end
 
   def save()
-    sql = "INSERT INTO countries (name, visited)
-    VALUES($1, $2)
+    sql = "INSERT INTO countries (name)
+    VALUES($1)
     RETURNING id;"
-    values = [@name, @visited]
+    values = [@name]
     result = SqlRunner.run(sql, values)
     @id = result.first['id'].to_i
   end
 
   def update()
     sql = "UPDATE countries
-    SET name = ($1, $2)
-    WHERE id = $3;" # Tested city update, do I even need country update now?
-    values = [@name, @visited, @id]
+    SET name = ($1)
+    WHERE id = $2;" # Tested city update, do I even need country update now?
+    values = [@name, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -33,6 +32,13 @@ class Country
     values = [@id]
     SqlRunner.run(sql, values)
   end
+
+  def cities()
+   sql = "SELECT * FROM cities WHERE country_id = $1"
+   values = [@id]
+   results = SqlRunner.run(sql, values)
+   return results.map {|city| City.new(city)}
+ end
 
   def self.delete_all()
     sql = "DELETE FROM countries;"
@@ -56,20 +62,6 @@ class Country
 
   def self.map_items(country_info)
     return country_info.map {|country| Country.new(country)}
-  end
-
-  def self.countries_visited
-    sql = 'SELECT * FROM countries WHERE visited = true'
-    visited = SqlRunner.run(sql)
-    countries = map_items(visited)
-    return countries
-  end
-
-  def self.countries_not_visited
-    sql = 'SELECT * FROM countries WHERE visited = false'
-    not_visited = SqlRunner.run(sql)
-    countries = map_items(not_visited)
-    return countries
   end
 
 end
