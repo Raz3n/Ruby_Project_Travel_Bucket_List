@@ -2,10 +2,10 @@
 
   <h3>Country: <%= @country.name %>
 
-  <p><a href="/cities/<%= @country.id %>/edit" >Edit Country</a></p>
+  <p><a href="/countries/<%= @country.id %>/edit" >Edit Country</a></p>
 
-  <form action="/cities/<%= @country.id %>/delete" method="post">
-    <input type="submit" value="Delete City"/>
+  <form action="/countries/<%= @country.id %>/delete" method="post">
+    <input type="submit" value="Delete Country"/>
   </form>
 
   <h4><a href="/countries">All Countries</a></h4>

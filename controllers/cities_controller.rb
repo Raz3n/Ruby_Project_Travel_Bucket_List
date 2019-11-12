@@ -9,10 +9,10 @@ get '/cities' do
   erb(:"cities/index")
 end
 
-post "/cities" do
+post '/cities' do
   city = City.new(params)
   city.save
-  redirect to("/cities")
+  redirect to('/cities')
 end
 
 get '/cities/visited' do
