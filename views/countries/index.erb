@@ -1,0 +1,5 @@
+<h1>Countries</h1>
+
+<% for country in @countries %>
+<p><a href="/countries/<%= country.id %>"><%= country.name %></a></p>
+<% end %>
