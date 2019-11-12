@@ -1,0 +1,13 @@
+  <form method="post" action="/cities/<%= @city.id %>">
+    <label for="city">City Name:</label>
+    <input type="text" name="name" value=""/><br>
+
+    <label for="country">Country Name:</label>
+    <input type="text" name="country_id" value="">
+
+    <br>
+    <input type="radio" name="visited" value="true" <%= "checked" if @city.visited %>/>Visited City <br>
+    <input type="radio" name="visited" value="false" <%= "checked" if !@city.visited %>/>Not Visited City <br>
+
+    <input type="submit" value="Edit City">
+  </form>
