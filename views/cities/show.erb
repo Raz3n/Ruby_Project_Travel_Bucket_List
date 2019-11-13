@@ -1,12 +1,19 @@
 <h1><%= @city.name %></h1>
 
   <h3>Country: <%= @city.country.name %>
+<ul>
 
-  <p><a href="/cities/<%= @city.id %>/edit" >Edit City</a></p>
 
+  <li>
+    <p><a href="/cities/<%= @city.id %>/edit" >Edit City</a></p>
+  </li>
+  <li>
   <form action="/cities/<%= @city.id %>/delete" method="post">
     <input type="submit" value="Delete City"/>
   </form>
+  </li>
+
+  </ul>
 
   <!-- <h4><a href="/cities">All Cities</a></h4> -->
 <!-- Hashed out as it is redundant but may keep for clarity -->
