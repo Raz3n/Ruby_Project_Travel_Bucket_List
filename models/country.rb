@@ -46,7 +46,7 @@ class Country
   end
 
   def self.all()
-    sql = "SELECT * FROM countries;"
+    sql = "SELECT * FROM countries ORDER BY name;"
     country_info = SqlRunner.run(sql)
     result = map_items(country_info)
     return result

@@ -54,7 +54,7 @@ class City
   end
 
   def self.all()
-    sql = "SELECT * FROM cities;"
+    sql = "SELECT * FROM cities ORDER BY name;"
     city_info = SqlRunner.run(sql)
     result = map_items(city_info)
     return result
