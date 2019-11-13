@@ -6,7 +6,7 @@ also_reload('./models/*')
 
 get '/cities' do
   @cities = City.all()
-  erb(:"cities/index")
+  erb(:'cities/index')
 end
 
 post '/cities' do
@@ -17,15 +17,15 @@ end
 
 get '/cities/visited' do
   @visited_cities = City.visited
-  erb(:"cities/visited")
+  erb(:'cities/visited')
 end
 
 get '/cities/notvisited' do
   @visited_cities = City.not_visited
-  erb(:"cities/visited")
+  erb(:'cities/visited')
 end
 
-get "/cities/new" do
+get '/cities/new' do
   @countries = Country.all
   erb(:'cities/new')
 end
@@ -35,19 +35,19 @@ get '/cities/:id' do
   erb(:'cities/show')
 end
 
-get "/cities/:id/edit" do
+get '/cities/:id/edit' do
   @city = City.find(params[:id])
   @countries = Country.all
   erb(:'cities/edit')
 end
 
-post "/cities/:id" do
+post '/cities/:id' do
   city = City.new(params)
   city.update
   redirect to "/cities/#{params["id"]}"
 end
 
-post "/cities/:id/delete" do
+post '/cities/:id/delete' do
   city = City.find(params[:id])
   city.delete()
   redirect to '/cities'

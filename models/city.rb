@@ -27,7 +27,7 @@ class City
     return country
   end
 
-  def country_name
+  def country_name()
     sql = "SELECT * FROM countries WHERE id = $1"
     values = [@country_id]
     result = SqlRunner.run(sql, values)

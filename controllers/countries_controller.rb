@@ -1,7 +1,7 @@
-require( 'sinatra' )
-require( 'sinatra/contrib/all' )
-require_relative( '../models/city.rb' )
-also_reload( '../models/*' )
+require('sinatra')
+require('sinatra/contrib/all')
+require_relative('../models/city.rb')
+also_reload('../models/*')
 
 get '/countries' do
   @countries = Country.all()
@@ -18,9 +18,8 @@ get '/countries/new' do
   erb(:'countries/new')
 end
 
-get "/countries/:id/edit" do
+get '/countries/:id/edit' do
   @country = Country.find(params[:id])
-
   erb(:'countries/edit')
 end
 
@@ -35,7 +34,7 @@ get '/countries/:id' do
   erb(:'countries/show')
 end
 
-post "/countries/:id/delete" do
+post '/countries/:id/delete' do
   country = Country.find(params[:id])
   country.delete()
   redirect to '/countries'
