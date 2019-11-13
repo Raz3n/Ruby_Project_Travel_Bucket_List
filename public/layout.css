@@ -1,4 +1,18 @@
+h1, h2, h3, h4{
+  font-family: verdana;
+}
+
+p{
+  font-family: verdana;
+}
+
+li{
+  font-family: verdana;
+}
+
 body {
-  font-family: Serif;
-  background-color: lightblue;
+  background-color: #F0B67F;
+}
+
+a{  text-decoration: none;
 }

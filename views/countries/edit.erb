@@ -1,11 +1,12 @@
+<hr>
+<h3>Edit Country</h3>
 <form method="post" action="/countries/<%= @country.id %>">
 
-  <label for="name">Country Name:</label>
+  <strong><label for="name">Country Name:</label></strong>
   <input type="text" name="name" value="<%= @country.name %>"/><br>
 
   <br>
 
-  <input type="submit" value="Edit Country">
+  <input type="submit" value="Submit">
 
 </form>
-</section>

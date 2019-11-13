@@ -2,13 +2,13 @@
 
 <ul>
   <li>
-    <a href="/cities/visited">Visited Cities</a>
+   <strong><a href="/cities/new">Create new city</a></strong>
   </li>
   <li>
-    <a href="/cities/notvisited">Not Visited Cities</a>
+    <strong><a href="/cities/visited">Visited cities</a></strong>
   </li>
   <li>
-    <a href="/cities/new">Create new</a>
+    <strong><a href="/cities/notvisited">Not visited cities</a></strong>
   </li>
 </ul>
 
@@ -23,9 +23,9 @@
   </tr>
   <% for city in @cities %>
   <tr>
-    <td><a href="/cities/<%= city.id %>"><%= city.name %></a></td>
+    <td><strong><a href="/cities/<%= city.id %>"><%= city.name %></a></td><strong>
     <td></td>
-    <td><%= city.country.name %></td>
+    <td><strong><%= city.country.name %></td></strong>
     <td></td>
     <td></td>
   </tr>

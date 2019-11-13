@@ -1,19 +1,20 @@
-  <h1> Create new city</h1>
+<hr>
+<h1> Create new city</h1>
 
   <form method="post" action="/cities">
 
-    <label for="name">City name:</label>
+    <strong><label for="name">City name:</label></strong>
     <input type="text" name="name" id="name"/><br>
 
-    <label for="country"> Country name:</label>
+    <strong><label for="country"> Country name:</label></strong>
     <select name="country_id" id="country_id">
       <% @countries.each do |country| %>
        <option value="<%= country.id %>"><%= country.name %></option>
        <% end %>
     </select>
     <br>
-    <input type="radio" name="visited" value="true"/>Visited city <br>
-    <input type="radio" name="visited" value="false"/>Not visited city <br>
+    <strong><input type="radio" name="visited" value="true"/>Visited city <br>
+    <strong><input type="radio" name="visited" value="false"/>Not visited city <br>
 
     <input type="submit" value="Add City"/>
   </form>
