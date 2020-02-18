@@ -22,7 +22,7 @@ class Country
   def update()
     sql = "UPDATE countries
     SET name = ($1)
-    WHERE id = $2;" # Tested city update, do I even need country update now?
+    WHERE id = $2;" 
     values = [@name, @id]
     SqlRunner.run(sql, values)
   end
@@ -32,13 +32,6 @@ class Country
     values = [@id]
     SqlRunner.run(sql, values)
   end
-
-  def cities()
-   sql = "SELECT * FROM cities WHERE country_id = $1"
-   values = [@id]
-   results = SqlRunner.run(sql, values)
-   return results.map {|city| City.new(city)}
- end
 
   def self.delete_all()
     sql = "DELETE FROM countries;"

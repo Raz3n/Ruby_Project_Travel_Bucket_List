@@ -36,5 +36,4 @@ city6.save()
 city7.save()
 
 
-binding.pry
 nil
